@@ -7,6 +7,8 @@ use App\Http\Middleware\BasicAuthMiddleware;
 use App\Http\Controllers\BookController;
 
 
+// === MAIN VIEW CONTROLLER ===
+
 Route::get('/', [BookController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('/library', [BookController::class, 'showLibrary'])->name('library')->middleware('auth');
@@ -14,6 +16,21 @@ Route::get('/library', [BookController::class, 'showLibrary'])->name('library')-
 Route::get('/favorites', [BookController::class, 'showFavs'])->name('favorites')->middleware('auth');
 
 Route::get('/categories', [BookController::class, 'showCategories'])->name('categories')->middleware('auth');
+
+Route::get('/published', [BookController::class, 'showPublished'])->name('published')->middleware('auth');
+
+// === ADMIN VIEW CONTROLLER ===
+
+Route::get('/admin', function () {
+    // NOTE: lol
+    if (!(Auth::user()->role == "admin")) return redirect('/');
+    return view('admin.main');
+})->name('admin.home')->middleware('auth');
+
+Route::get('/admin/users', [AuthController::class, 'index'])->name('admin.users');
+Route::get('/admin/users/{id}/edit', [AuthController::class, 'edit'])->name('admin.users.edit');
+Route::post('/admin/users/{id}/edit', [AuthController::class, 'update'])->name('admin.users.edit');
+Route::delete('/admin/users/{id}', [AuthController::class, 'delete'])->name('admin.users.delete');
 
 // === BOOK CONTROLLER ===
 
