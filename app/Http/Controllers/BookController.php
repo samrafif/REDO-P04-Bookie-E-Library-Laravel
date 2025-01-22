@@ -47,6 +47,14 @@ class BookController extends Controller
         return view('main.home', compact('books', 'userFavs'));
     }
 
+    public function showPublished(Request $request)
+    {   
+        $this->releaseExpiredBooks();
+        list($books, $userFavs) = $this->getBooksAndFavsWithSearch($request, 'usr_publish');
+
+        return view('main.home', compact('books', 'userFavs'));
+    }
+
 
     public function show($id)
     {
@@ -202,6 +210,10 @@ class BookController extends Controller
             ->pluck('book');
             error_log($books);
 
+        } else if ($filter == 'usr_publish') {
+            $books = Book::when($search, function ($query, $search) {
+                return $query->where('book_name', 'like', '%' . $search . '%');
+            })->where('book_publisher', $userId)->get();
         } else {
             // Fetch books based on the search query
             $books = Book::when($search, function ($query, $search) {

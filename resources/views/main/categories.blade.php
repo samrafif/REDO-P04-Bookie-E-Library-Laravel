@@ -39,10 +39,15 @@
           <span class="material-symbols-outlined">favorite</span> Favorites
         </a>
       </li>
-      @if (Auth::user()->role == "publisher")
+            @if (in_array(Auth::user()->role, ["publisher", "admin"]))
       <li>
         <a href="{{ route('books.add') }}" class="flex items-center gap-6 text-white font-medium py-4 px-2 text-sm hover:text-gray-900 hover:bg-white rounded transition duration-200">
           <span class="material-symbols-outlined">upload</span> Publish a Book
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('published') }}" class="flex items-center gap-6 text-white font-medium py-4 px-2 text-sm hover:text-gray-900 hover:bg-white rounded transition duration-200">
+          <span class="material-symbols-outlined">collections_bookmark</span> Your Published Books
         </a>
       </li>
       @endif
