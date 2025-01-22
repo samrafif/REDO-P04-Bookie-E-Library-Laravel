@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+    margin-left: 85px;
+}
+
+.content {
+    padding: 4rem;
+    margin-left: 85px;
+}
+
+/* .card {
+  width: 100%;
+} */
+
+.card img {
+    width: 100%;
+}
+
+.card-content .card {
+    width: 250px;
+}
+
+.card .card-lol {
+    gap: 3rem;
+    display: flex;
+}
+
+.card .card-lol img {
+    width: 500px !important;
+}
+
+.card-detail {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* HACKY AF */
+.like-btn {
+    padding: 0;
+    padding-top: 5px;
+    width: 20%;
+    background-color: white;
+    color: black;
+}
+
+.like-btn:active {
+    background-color: black;
+    color: white;
+    /* box-shadow: 0px 0px;
+  translate: 5px 5px; */
+}
+
+.filled {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+button {
+    padding: 12px;
+    width: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    /* box-shadow: 5px 5px black; */
+    transition: all 200ms;
+}
+
+button:active {
+    background-color: white;
+    color: black;
+    /* box-shadow: 0px 0px;
+  translate: 5px 5px; */
+}
+
+button.disabled {
+    background-color: white;
+    color: black;
+}
+
+.card-content {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.Available {
+    color: green;
+}
+
+.Lended {
+    color: darkred;
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container input {
+    width: 20%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: none;
+}
