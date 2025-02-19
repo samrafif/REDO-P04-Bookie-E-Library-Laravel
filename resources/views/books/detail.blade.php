@@ -107,7 +107,7 @@
           <div class="card-lol">
               <img src="{{ asset($book->book_cover) }}" alt="{{ $book->book_name }}">
               <div class="card-detail">
-                  <h1>{{ $book->book_name }}</h1>
+                  <h1 style="font-size: 32px; font-weight: 900; ">{{ $book->book_name }}</h1>
                   <p>{{ $book->book_desc }}</p>
                   <div class="book-details">
                       <b class="{{ $lended }}">{{ $lended }}</b>

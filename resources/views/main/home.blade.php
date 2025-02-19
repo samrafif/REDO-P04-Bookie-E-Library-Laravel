@@ -137,6 +137,27 @@
       </div>
     </div>
   </div>
-  
+  <script>
+    var input = document.getElementById("query");
+
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+    let query = params.q; // "some_value"
+    input.value = query;
+
+    // Execute a function when the user presses a key on the keyboard
+    input.addEventListener("keypress", function(event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        window.location.href = `?q=${input.value}`;
+        console.log("balls");
+      }
+    });
+  </script>
 
 </body>
