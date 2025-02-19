@@ -170,7 +170,7 @@ class BookController extends Controller
         $currentDate = Carbon::now();
 
         // Retrieve books leased by the current user with lease end dates in the past
-        $expiredBooks = Book::where('book_leaser', $userId)
+        $expiredBooks = Book::whereNotNull('book_leaser')
                             ->where('book_lease_end_date', '<', $currentDate)
                             ->get();
         
